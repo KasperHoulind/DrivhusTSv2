@@ -26,9 +26,10 @@ statusbtn.textContent="Upload ny alarm"
 
 document.body.appendChild(inputWarrningtype)
 document.body.appendChild(inputStatus)
-
 document.body.appendChild(statusbtn)
 
+
+//Her bliver der lavet 2 PUT funktioner, der ændre vores status til Alram i vores database
 function alarmFunc(id:Number):any {
   axios.put(`${UrlAlarm}`+id,{
 
@@ -45,6 +46,7 @@ function alarmFunc(id:Number):any {
   });
 
  }
+//Her bliver der lavet 2 PUT funktioner, der ændre vores status til OK i vores database
 
  function alarmFuncOK(id:Number):any {
   axios.put(`${UrlAlarm}`+id,{
@@ -63,29 +65,32 @@ function alarmFunc(id:Number):any {
 
  }
 
-
+// vi starter med at hente det data vi skal bruge i vores dirvhis collums, altså de 3 første.
 axios.get(UrlDrivhus)
   .then(function (response : any){ 
-     console.log(response);
+     console.log(response); // der bliver lavet en foreach løkke der hiver elementerne ud der kommer fra api kaldet
      response.data.forEach(drivhus => {
-         let row = document.createElement("tr");
+         let row = document.createElement("tr"); // der bliver lavet et table row til hver "sæt" data der kommer ind.
          table.appendChild(row);
-
+         
+         //der laves en collum til hvert element der kommer ind
          let drivhus_id = document.createElement("td");
          let drivhus_temp = document.createElement("td");
          let drivhus_humi = document.createElement("td")
          let warningmsg = document.createElement("td")
          let statusmsg = document.createElement("td")
-         let buttonthingy = document.createElement('td')
+         let buttonthingy = document.createElement('td') // bruges ikke, så den bliver aldrig lavet.
          let setStatusOK =document.createElement('button')
 
          
          setStatusOK.textContent = "Set"
 
+         //de html elemernet der er defienret i i toppen bliver sat til at være lig de værdier der kommer fra vores api svar.
          drivhus_id.innerText = drivhus.id
          drivhus_temp.innerText = drivhus.temp +" °"
          drivhus_humi.innerText = drivhus.humi +" %"
-        
+
+         //daten bliver sat ind
          row.appendChild(drivhus_id);
          row.appendChild(drivhus_temp);
          row.appendChild(drivhus_humi);
@@ -94,19 +99,22 @@ axios.get(UrlDrivhus)
          
 
        
-
+            //her blivver de forskellige warrning beskder kladt. der startets med at sætte en condiotn op for hvornår den skal køres/kaldes whatever, det sker i if-statementen der bliver kaldt på const UrlAlarm + 11 fordi den pågældende alram har et id 11 i vores database
          if (drivhus.temp < 20  &&  drivhus.humi > 60 ) {
             axios.get(`${UrlAlarm}` + "11")
             .then(function(response){
                 console.log(response)
               let alarm =  response.data as any;
-              warningmsg.innerText = alarm[0].warningstype
-              statusmsg.innerText =  "Alarm"
-              alarmFunc(11)
+
+              warningmsg.innerText = alarm[0].warningstype // sætter vores warning collum til at indholde den besked vi henter fra databasen
+              statusmsg.innerText =  "Alarm" // når alarmen bliver aktiveret ændrede den teksten i vores status til Alram, dette sker kun "lokalt"
+              alarmFunc(11)//her laver vi kaldet der ændre det i databasen
+
+              //der bliver lavet en onclick func der gør at når der trykkes på vores status knap, vil teksten i status blive ændret til OK, og det samme sker i databasen.
               setStatusOK.onclick = () => {
                 statusmsg.innerText ="OK"
                 setStatusOK.hidden
-                alarmFuncOK(11)
+                alarmFuncOK(11) //database put func.
             }
              
      
