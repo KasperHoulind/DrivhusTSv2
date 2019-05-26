@@ -1,0 +1,121 @@
+body{
+    /* The light blue color in the background. */
+    background-color:rgba(5, 35, 200, 0.2) !important;
+  }
+
+  /* Giver 'card' effekten via skygger */
+  .transcard {    
+    box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    margin-block-start:20px;
+    margin-bottom: 25px;
+    margin-left: 10px;
+    margin-inline-end: 10px;
+    width: 100%;    
+    background-color:#ffffff !important;
+  
+  }
+
+/* Style til knapperne og input felter der skrive i */
+  button {
+    background-color:rgb(16, 197, 86);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  button:hover {
+    opacity: 0.8;
+  }
+
+  input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+
+
+
+/* Table stylingen de forskellige boxshadows styre "zoom" og ligende*/
+  .table th h1 {
+    font-weight: bold;
+    font-size: 1em;
+    text-align: left;
+    color: #185875;
+}
+
+.table td {
+    font-weight: normal;
+    font-size: 1em;
+    -webkit-box-shadow: 0 2px 2px -2px #0E1119;
+     -moz-box-shadow: 0 2px 2px -2px #0E1119;
+          box-shadow: 0 2px 2px -2px #0E1119;
+}
+
+.table {
+    text-align: left;
+    width: 100%;
+    //margin: 0 auto;
+    display: table;
+    padding: 0 0 10em 0;
+    cursor: pointer;
+}
+/* table "cell" padding */
+.table td, .table th {
+    padding-bottom: 4%;
+    padding-top: 2%;
+    padding-left:2%;
+
+}
+
+/* Background-color of the odd rows and even rows  */
+.table tr:nth-child(odd) {
+    background-color: rgba(226, 223, 241, 0.719);
+}
+
+
+.table tr:nth-child(even) {
+    background-color: #E2EAFF;
+}
+
+
+/* table header color*/
+.table th {
+    background-color: #FFFFFF;
+}
+
+/* color for the txt in thew first collum*/
+.table td:first-child { color: rgb(145, 85, 241); }
+
+/* color when hovering over a td element */
+.table tr:hover {
+ background-color: #99B3E7;
+-webkit-box-shadow: 0 6px 6px -6px #0E1119;
+     -moz-box-shadow: 0 6px 6px -6px #0E1119;
+          box-shadow: 0 6px 6px -6px #0E1119;
+}
+
+/* txt color and other settings when hovering */
+.table td:hover {
+background-color: #7B99F3;
+color: rgba(255, 255, 255, 0.856);
+font-weight: normal;
+
+box-shadow: #5B5E78 -1px 1px, #5B5E78 -2px 2px, #5B5E78 -3px 3px, #5B5E78 -4px 4px, #5B5E78 -5px 5px, #5B5E78 -6px 6px;
+transform: translate3d(6px, -6px, 0);
+
+    transition-delay: 0s;
+    transition-duration: 0.2s;
+    transition-property: all;
+    transition-timing-function: line;
+}
+
+
+
+  
