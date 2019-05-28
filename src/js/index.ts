@@ -12,7 +12,7 @@ let inputID = document.createElement("input") as HTMLInputElement
 let inputTemp = document.createElement("input") as HTMLInputElement
 let inputHumi = document.createElement("input") as HTMLInputElement
 let inputWarrningtype = document.createElement("input") as HTMLInputElement
-let inputStatus = document.createElement("input") as HTMLInputElement
+let inputStatus = document.createElement("prut") as HTMLInputElement
 
 let statusbtn = document.createElement("button") as HTMLButtonElement
 
